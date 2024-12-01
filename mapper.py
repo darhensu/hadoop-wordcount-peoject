@@ -1,10 +1,12 @@
-#!/usr/bin/env python 3
+#!/usr/bin/env python3
 import sys
 
-# Input processing
+# Read input line by line
 for line in sys.stdin:
-    line = line.strip() # remove leading and trailing whitespace
-    words = line.split() # split line into words
+    # Remove leading/trailing whitespace
+    line = line.strip()
+    # Split the line into words
+    words = line.split()
+    # Emit each word with a count of 1
     for word in words:
-        # output key-value pair: word\t 1
         print(f"{word}\t1")

@@ -5,27 +5,28 @@ current_word = None
 current_count = 0
 word = None
 
-# process input from mapper
+# Read input from stdin
 for line in sys.stdin:
-    line = line.strip() # remove leading/trailing whitespace
-    word, count = line.split("\t", 1) # split line into word and count
+    # Remove leading/trailing whitespace
+    line = line.strip()
+    # Parse the input (word \t count)
+    word, count = line.split("\t", 1)
     try:
         count = int(count)
     except ValueError:
-        continue # ignore lines with errors
+        # Ignore lines with invalid count
+        continue
     
+    # If the word is the same as the previous one, increment the count
     if word == current_word:
         current_count += count
     else:
+        # Otherwise, print the word and its count
         if current_word:
-            # output key-value pair: word \t count
             print(f"{current_word}\t{current_count}")
         current_word = word
         current_count = count
-        
-# putput the last word if needed
+
+# Output the last word's count
 if current_word == word:
     print(f"{current_word}\t{current_count}")
-    
-    
-
